@@ -49,6 +49,9 @@ class Trie {
         }
         return results;
     }
+    clear() {
+        this.root = new TrieNode();
+    }
 }
 
 // Trie
@@ -57,7 +60,6 @@ const trie = new Trie();
 function load_emails() {
     const stored_emails = JSON.parse(localStorage.getItem("email_list")) || [];
     email_list = stored_emails;
-
     stored_emails.forEach(email => {
         trie.insert(email);
     });
@@ -65,6 +67,10 @@ function load_emails() {
 
 function save_emails() {
     localStorage.setItem("email_list", JSON.stringify(email_list));
+    trie.clear();
+    email_list.forEach(email => {
+        trie.insert(email);
+    });
 }
 
 load_emails();
