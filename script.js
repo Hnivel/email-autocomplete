@@ -67,6 +67,8 @@ function save_emails() {
     localStorage.setItem("email_list", JSON.stringify(email_list));
 }
 
+load_emails();
+
 // DOM Elements
 const email_input = document.getElementById("email-input");
 const suggestions_container = document.getElementById("suggestions");
